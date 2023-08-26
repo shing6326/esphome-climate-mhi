@@ -10,7 +10,7 @@ namespace esphome {
         const uint32_t MHI_ON = 0x00;
 
         // Operating mode
-        const uint8_t MHI_AUTO = 0x07;
+        const uint8_t MHI_HEAT_COOL = 0x07;
         const uint8_t MHI_HEAT = 0x03;
         const uint8_t MHI_COOL = 0x06;
         const uint8_t MHI_DRY = 0x05;
@@ -145,8 +145,8 @@ namespace esphome {
                         this->mode = climate::CLIMATE_MODE_DRY;
                         break;
                     default:
-                    case MHI_AUTO:
-                        this->mode = climate::CLIMATE_MODE_AUTO;
+                    case MHI_HEAT_COOL:
+                        this->mode = climate::CLIMATE_MODE_HEAT_COOL;
                         // swingV = MHI_VS_MIDDLE;
                         break;
                 }
@@ -219,7 +219,7 @@ namespace esphome {
             // Initial values
             // ----------------------
 
-            auto operatingMode = MHI_AUTO;
+            auto operatingMode = MHI_HEAT_COOL;
             auto powerMode = MHI_ON;
             auto cleanMode = 0x60; // always off
 
@@ -245,8 +245,8 @@ namespace esphome {
                     operatingMode = MHI_HEAT;
                     swingV = MHI_VS_DOWN; // custom preferred value for this mode
                     break;
-                case climate::CLIMATE_MODE_AUTO:
-                    operatingMode = MHI_AUTO;
+                case climate::CLIMATE_MODE_HEAT_COOL:
+                    operatingMode = MHI_HEAT_COOL;
                     swingV = MHI_VS_MIDDLE; // custom preferred value for this mode
                     break;
                 case climate::CLIMATE_MODE_FAN_ONLY:
