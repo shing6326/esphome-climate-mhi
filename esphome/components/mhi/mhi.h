@@ -13,7 +13,7 @@ namespace esphome {
                 void transmit_state() override;
                 /// Handle received IR Buffer
                 bool on_receive(remote_base::RemoteReceiveData data) override;
-                ClimateTraits traits() override {
+                climate::ClimateTraits traits() override {
                     auto traits = climate::ClimateTraits();
                     traits.set_supported_modes(
                     {
